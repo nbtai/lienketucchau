@@ -52,6 +52,8 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -71,41 +73,39 @@ doctrine_mongodb:
     default_database: "%mongodb_db%"
     document_managers:
         default:
+            auto_mapping: true
             mappings:
+                ApplicationSonataUserBundle: ~
                 SonataUserBundle: ~
                 FOSUserBundle: ~
-            auto_mapping: true
-
 
 fos_oauth_server:
-    db_driver: mongodb
+    db_driver:                  mongodb
     client_class:        Offy\Bundle\UserBundle\Document\Client
     access_token_class:  Offy\Bundle\UserBundle\Document\AccessToken
     refresh_token_class: Offy\Bundle\UserBundle\Document\RefreshToken
     auth_code_class:     Offy\Bundle\UserBundle\Document\AuthCode
+    model_manager_name:         ~ # change it to the name of your entity/document manager if you don't want to use the default one.
+    authorize:
+        form:
+            type:               fos_oauth_server_authorize
+            handler:            fos_oauth_server.authorize.form.handler.default
+            name:               fos_oauth_server_authorize_form
+            validation_groups:
+
+                # Defaults:
+                - Authorize
+                - Default
     service:
-        user_provider: platform.user.provider
+        storage:                fos_oauth_server.storage.default
+        user_provider:          ~
+        client_manager:         fos_oauth_server.client_manager.default
+        access_token_manager:   fos_oauth_server.access_token_manager.default
+        refresh_token_manager:  fos_oauth_server.refresh_token_manager.default
+        auth_code_manager:      fos_oauth_server.auth_code_manager.default
         options :
             supported_scopes: user
             access_token_lifetime: 7776000
-
-# fos_user:
-#     db_driver: mongodb
-#     firewall_name: main
-#     user_class: Offy\Bundle\UserBundle\Document\User
-#     service:
-#         mailer:  fos_user.mailer.twig_swift
-#     from_email:
-#         address:        tainb92@gmail.com
-#         sender_name:    Tai Nguyen
-#     registration:
-#         form:
-#             type: fos_user_rest_registration
-#         confirmation:
-#             from_email:
-#                 address:        registration@example.com
-#                 sender_name:    Demo Registration
-
 fos_rest:
     param_fetcher_listener: true
     view:

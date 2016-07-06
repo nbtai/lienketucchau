@@ -17,20 +17,15 @@ sonata_user:
 fos_user:
     db_driver:      mongodb # can be orm or odm
     firewall_name:  main
-    user_class:     Sonata\UserBundle\Document\BaseUser
+    user_class:     Application\Sonata\UserBundle\Document\User
 
 
     group:
-        group_class:   Sonata\UserBundle\Document\BaseGroup
+        group_class:   Application\Sonata\UserBundle\Document\Group
         group_manager: sonata.user.mongodb.group_manager                   # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 
     service:
         user_manager: sonata.user.mongodb.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
-
-doctrine:
-    dbal:
-        types:
-            json: Sonata\Doctrine\Types\JsonType
 
 ########### Sonata media https://sonata-project.org/bundles/media/2-2/doc/reference/installation.html
 sonata_media:
