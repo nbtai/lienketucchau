@@ -68,7 +68,6 @@ doctrine_mongodb:
               username: "%mongodb_username%"
               password: "%mongodb_password%"
               db: "%mongodb_db%"
-    default_database: hello_%kernel.environment%
     default_database: "%mongodb_db%"
     document_managers:
         default:
