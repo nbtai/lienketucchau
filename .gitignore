@@ -1,7 +1,6 @@
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
-/bower_components/
 /app/config/parameters.yml
 /app/logs/*
 !app/cache/.gitkeep
@@ -10,4 +9,5 @@
 /build/
 /vendor/
 /bin/
+/bower_components/
 /composer.phar
