@@ -24,6 +24,11 @@ class Category
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Tainb\Bundle\BlogBundle\Entity\Blog", mappedBy="category")
+     */
+    private $blogs;
+
+    /**
      * @ORM\Column(type="datetime", name="createdAt", nullable=true)
      */
     private $createdAt;
@@ -114,5 +119,47 @@ class Category
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->blogs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Add blog
+     *
+     * @param \Tainb\Bundle\BlogBundle\Entity\Blog $blog
+     *
+     * @return Category
+     */
+    public function addBlog(\Tainb\Bundle\BlogBundle\Entity\Blog $blog)
+    {
+        $this->blogs[] = $blog;
+
+        return $this;
+    }
+
+    /**
+     * Remove blog
+     *
+     * @param \Tainb\Bundle\BlogBundle\Entity\Blog $blog
+     */
+    public function removeBlog(\Tainb\Bundle\BlogBundle\Entity\Blog $blog)
+    {
+        $this->blogs->removeElement($blog);
+    }
+
+    /**
+     * Get blogs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBlogs()
+    {
+        return $this->blogs;
     }
 }
