@@ -1,3 +1,7 @@
+tainb_category:
+    resource: "@TainbCategoryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
