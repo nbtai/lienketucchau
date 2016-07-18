@@ -30,6 +30,12 @@ class AppKernel extends Kernel
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Tainb\Bundle\CategoryBundle\TainbCategoryBundle(),
             new Tainb\Bundle\BlogBundle\TainbBlogBundle(),
+
+            // SonataMarkItUpBundle is deprecated. All assets are now available in formatter bundle
+            // new Sonata\MarkItUpBundle\SonataMarkItUpBundle(),
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

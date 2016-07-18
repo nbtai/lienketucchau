@@ -13,7 +13,13 @@ class BlogAdmin extends Admin
     {
         $formMapper->add('title', 'text')
             ->add('description', 'text')
-            ->add('content', 'textarea')
+            ->add('content', 'sonata_formatter_type_selector', array(
+                'source_field'         => 'content',
+                'source_field_options' => array('attr' => array('class' => 'span10', 'rows' => 20)),
+                'format_field'         => 'content',
+                'target_field'         => 'formatted_description',
+                'event_dispatcher'     => $formMapper->getFormBuilder()->getEventDispatcher(),
+            ))
             ->add('category', 'entity', array(
                 'class' => 'Tainb\Bundle\CategoryBundle\Entity\Category',
                 'property' => 'name',
