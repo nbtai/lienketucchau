@@ -1,3 +1,0 @@
-tainb_category_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: TainbCategoryBundle:Default:index }

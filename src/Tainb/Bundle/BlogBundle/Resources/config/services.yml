@@ -1,9 +1,0 @@
-services:
-#    tainb_blog.example:
-#        class: Tainb\Bundle\BlogBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
-      admin.blog_post:
-              class: Tainb\Bundle\BlogBundle\Admin\BlogAdmin
-              arguments: [~, Tainb\Bundle\BlogBundle\Entity\Blog, ~]
-              tags:
-                  - { name: sonata.admin, manager_type: orm, label: Blog, group: 'Blog Management'}
