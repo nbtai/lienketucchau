@@ -1,0 +1,3 @@
+tainb_blog_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TainbBlogBundle:Default:index }

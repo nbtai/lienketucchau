@@ -1,3 +1,9 @@
+sonata_admin:
+    title:      LinkAu Admin
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::layout.html.twig
+
 sonata_block:
     default_contexts: [cms]
     blocks:
