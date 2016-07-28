@@ -1,5 +1,5 @@
 sonata_admin:
-    title:      LinkAu Admin
+    title:      LienKetUcChau Admin
     templates:
         # default global templates
         layout:  SonataAdminBundle::layout.html.twig
