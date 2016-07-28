@@ -22,6 +22,16 @@ class Blog
     private $id;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $contentFormatter;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $rawContent;
+
+    /**
      * @ORM\Column(type="text")
      */
     protected $content;
@@ -37,27 +47,5 @@ class Blog
         return $this->id;
     }
 
-    /**
-     * Set content
-     *
-     * @param \text $content
-     *
-     * @return Blog
-     */
-    public function setContent(\text $content)
-    {
-        $this->content = $content;
 
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return \blob
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
 }

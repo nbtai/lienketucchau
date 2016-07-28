@@ -22,6 +22,16 @@ class Blog
     private $id;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $contentFormatter;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $rawContent;
+
+    /**
      * @ORM\Column(type="text")
      */
     protected $content;
@@ -37,14 +47,61 @@ class Blog
         return $this->id;
     }
 
+
+
+    /**
+     * Set contentFormatter
+     *
+     * @param string $contentFormatter
+     * @return Blog
+     */
+    public function setContentFormatter($contentFormatter)
+    {
+        $this->contentFormatter = $contentFormatter;
+
+        return $this;
+    }
+
+    /**
+     * Get contentFormatter
+     *
+     * @return string 
+     */
+    public function getContentFormatter()
+    {
+        return $this->contentFormatter;
+    }
+
+    /**
+     * Set rawContent
+     *
+     * @param string $rawContent
+     * @return Blog
+     */
+    public function setRawContent($rawContent)
+    {
+        $this->rawContent = $rawContent;
+
+        return $this;
+    }
+
+    /**
+     * Get rawContent
+     *
+     * @return string 
+     */
+    public function getRawContent()
+    {
+        return $this->rawContent;
+    }
+
     /**
      * Set content
      *
-     * @param \text $content
-     *
+     * @param string $content
      * @return Blog
      */
-    public function setContent(\text $content)
+    public function setContent($content)
     {
         $this->content = $content;
 
@@ -54,7 +111,7 @@ class Blog
     /**
      * Get content
      *
-     * @return \text
+     * @return string 
      */
     public function getContent()
     {

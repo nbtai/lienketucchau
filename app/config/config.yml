@@ -2,7 +2,9 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: sonata_admin.config.yml }
+    - { resource: sonata/sonata_admin.config.yml }
+    - { resource: sonata/sonata_media.config.yml }
+    - { resource: ivory/ivory_ckeditor.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -71,10 +73,14 @@ sonata_formatter:
                 - sonata.formatter.twig.gist
         #        - sonata.media.formatter.twig
 
-
         twig:
             service: sonata.formatter.text.twigengine
             extensions: [] # Twig formatter cannot have extensions
+
+    ckeditor:
+        templates:
+            browser: 'SonataFormatterBundle:Ckeditor:browser.html.twig'
+            upload: 'SonataFormatterBundle:Ckeditor:upload.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -105,6 +111,8 @@ doctrine:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
                     FOSUserBundle: ~                                    # If SonataUserBundle extends it
+                    ApplicationSonataMediaBundle: ~
+                    SonataMediaBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

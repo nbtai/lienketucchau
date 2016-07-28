@@ -12,12 +12,26 @@ class BlogAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper
-            ->add('content') // source content
-            ->add('contentFormatter', 'sonata_formatter_type', array(
-            'source_field' => 'content',
-            'target_field' => 'content'
+//        $formMapper
+//            ->add('content', 'sonata_formatter_type', array(
+//                'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
+//                'format_field'   => 'contentFormatter',
+//                'source_field'   => 'rawContent',
+//                'source_field_options'      => array(
+//                    'attr' => array('class' => 'span10', 'rows' => 20)
+//                ),
+//                'listener'       => true,
+//                'target_field'   => 'content'
+//            ));
+        $formMapper->add('content', 'sonata_formatter_type', array(
+            'source_field'         => 'rawContent',
+            'source_field_options' => array('attr' => array('class' => 'span10', 'rows' => 20)),
+            'format_field'         => 'contentFormatter',
+            'target_field'         => 'content',
+            'ckeditor_context'     => 'default',
+            'event_dispatcher'     => $formMapper->getFormBuilder()->getEventDispatcher()
         ));
+
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -28,5 +42,6 @@ class BlogAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('content');
+//        $listMapper->add('content');
     }
 }
