@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="blog")
  * @ORM\Entity(repositoryClass="Tainb\Bundle\BlogBundle\Repository\BlogRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Blog
 {
@@ -20,6 +21,16 @@ class Blog
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $description;
 
     /**
      * @ORM\Column(type="string")
@@ -36,6 +47,21 @@ class Blog
      */
     protected $content;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Tainb\Bundle\CategoryBundle\Entity\Category", inversedBy="blogs")
+     */
+    private $category;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
 
     /**
      * Get id
@@ -47,5 +73,113 @@ class Blog
         return $this->id;
     }
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function doStuffOnPrePersist()
+    {
+        $this->createdAt= new \DateTime();
+        $this->updatedAt= new \DateTime();
+    }
 
+    /**
+     * @ORM\PreUpdate
+     */
+    public function doStuffOnPreUpdate()
+    {
+        $this->updatedAt= new \DateTime();
+    }
+
+    /**
+     * Set contentFormatter
+     *
+     * @param string $contentFormatter
+     * @return Blog
+     */
+    public function setContentFormatter($contentFormatter)
+    {
+        $this->contentFormatter = $contentFormatter;
+
+        return $this;
+    }
+
+    /**
+     * Get contentFormatter
+     *
+     * @return string 
+     */
+    public function getContentFormatter()
+    {
+        return $this->contentFormatter;
+    }
+
+    /**
+     * Set rawContent
+     *
+     * @param string $rawContent
+     * @return Blog
+     */
+    public function setRawContent($rawContent)
+    {
+        $this->rawContent = $rawContent;
+
+        return $this;
+    }
+
+    /**
+     * Get rawContent
+     *
+     * @return string 
+     */
+    public function getRawContent()
+    {
+        return $this->rawContent;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Blog
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Tainb\Bundle\CategoryBundle\Entity\Category $category
+     *
+     * @return Blog
+     */
+    public function setCategory(\Tainb\Bundle\CategoryBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Tainb\Bundle\CategoryBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Tainb\Bundle\BlogBundle\TainbBlogBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Tainb\Bundle\CategoryBundle\TainbCategoryBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

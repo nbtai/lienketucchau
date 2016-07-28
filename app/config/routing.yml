@@ -1,6 +1,10 @@
+tainb_category:
+    resource: "@TainbCategoryBundle/Resources/config/routing.yml"
+    prefix:   /category
+
 tainb_blog:
     resource: "@TainbBlogBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /blog
 
 app:
     resource: "@AppBundle/Controller/"

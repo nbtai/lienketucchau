@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3b4dbaaedcb1eb2a7fb15c5416fc70a3",
+    "hash": "b2bb6a17a0d0b660e22166f328c9f311",
     "content-hash": "7ae78ab9b29b5404841933aadaaa6bf9",
     "packages": [
         {
@@ -2023,7 +2023,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
