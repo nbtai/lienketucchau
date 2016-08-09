@@ -1,0 +1,29 @@
+{
+  "name": "lienketucchau",
+  "version": "1.0.0",
+  "description": "Symfony Standard Edition\r ========================",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "gulp-bower": "^0.0.13",
+    "gulp-notify": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-ruby-sass": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbtai/lienketucchau.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nbtai/lienketucchau/issues"
+  },
+  "homepage": "https://github.com/nbtai/lienketucchau#readme"
+}
