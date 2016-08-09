@@ -39,6 +39,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Tainb\Bundle\CategoryBundle\TainbCategoryBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

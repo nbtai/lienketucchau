@@ -5,9 +5,25 @@
         <title>{% block title %}Liên Kết úc Châu{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('uploads/logo/favicon.png') }}" />
+        {% stylesheets filter="scssphp" output="css/app.css"
+        "assets/vendor/bootstrap/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss"
+        "assets/scss/font-awesome.scss"
+        "assets/css/*.css"
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
+        {% javascripts filter="?jsqueeze" output="js/app.js"
+        "assets/vendor/bootstrap/bootstrap-sass-official/vendor/assets/javascripts/jquery.js"
+        "assets/vendor/bootstrap/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"
+        "assets/js/main.js"
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
     </body>
 </html>

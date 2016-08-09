@@ -1,0 +1,23 @@
+{
+  "name": "lienketucchau",
+  "homepage": "https://github.com/nbtai/lienketucchau",
+  "authors": [
+    "baotai-nguyen <baotai.nguyen@officience.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "web/assets/vendor/"
+  ],
+  "dependencies": {
+    "sonata-project-admin-bundle": "./vendor/sonata-project/admin-bundle/bower.json",
+    "bootstrap": "^3.3.6"
+  }
+}
