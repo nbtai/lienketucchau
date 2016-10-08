@@ -1,10 +1,10 @@
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass')
+    sass = require('gulp-sass')
 notify = require("gulp-notify")
 bower = require('gulp-bower');
 
 var config = {
-    sassPath: './resources/sass',
+    sassPath: './assets/scss',
     bowerDir: './bower_components'
 }
 
@@ -14,8 +14,8 @@ gulp.task('bower', function() {
 });
 
 gulp.task('icons', function() {
-    return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
-        .pipe(gulp.dest('./public/fonts'));
+    return gulp.src(config.bowerDir + '/bootstrap/fontawesome/fonts/**.*')
+        .pipe(gulp.dest('./assets/fonts'));
 });
 
 gulp.task('css', function() {
@@ -23,7 +23,7 @@ gulp.task('css', function() {
         .pipe(sass({
             style: 'compressed',
             loadPath: [
-                './resources/sass',
+                './assets/sass',
                 config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
                 config.bowerDir + '/fontawesome/scss',
             ]
@@ -31,12 +31,17 @@ gulp.task('css', function() {
             .on("error", notify.onError(function (error) {
                 return "Error: " + error.message;
             })))
-        .pipe(gulp.dest('./public/css'));
+        .pipe(gulp.dest('./assets/css'));
 });
 
-// Rerun the task when a file changes
-gulp.task('watch', function() {
-    gulp.watch(config.sassPath + '/**/*.scss', ['css']);
+gulp.task('sass', function () {
+    return gulp.src('./web/assets/sass/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./web/assets/css'));
 });
 
-gulp.task('default', ['bower', 'icons', 'css']);
+gulp.task('sass:watch', function () {
+    gulp.watch('./web/assets/sass/**/*.scss', ['sass']);
+});
+
+gulp.task('default', ['bower', 'icons', 'css', 'sass:watch']);

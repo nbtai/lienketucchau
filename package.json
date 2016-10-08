@@ -12,7 +12,11 @@
     "gulp": "^3.9.1",
     "gulp-ruby-sass": "^2.0.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.7",
+    "gulplog": "^1.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
