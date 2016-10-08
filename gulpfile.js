@@ -4,7 +4,7 @@ notify = require("gulp-notify")
 bower = require('gulp-bower');
 
 var config = {
-    sassPath: './assets/scss',
+    sassPath: './assets/sass',
     bowerDir: './bower_components'
 }
 
@@ -25,7 +25,7 @@ gulp.task('css', function() {
             loadPath: [
                 './assets/sass',
                 config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
-                config.bowerDir + '/fontawesome/scss',
+                config.bowerDir + '/fontawesome/scss'
             ]
         })
             .on("error", notify.onError(function (error) {
